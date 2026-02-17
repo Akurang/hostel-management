@@ -2,17 +2,21 @@
   <div class="min-h-screen bg-slate-50">
     <Navbar />
 
-    <section class="relative isolate">
+    <section class="relative isolate overflow-hidden">
       <img
         src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1800&q=80"
         alt="Campus residence"
         class="h-[560px] w-full object-cover"
       />
       <div class="absolute inset-0 bg-slate-950/60" />
+      <div class="absolute -bottom-20 right-8 h-64 w-64 rounded-full bg-emerald-400/20 blur-3xl" />
 
       <div class="absolute inset-0 mx-auto flex w-full max-w-7xl items-center px-4 sm:px-6 lg:px-8">
         <div class="w-full max-w-3xl space-y-8 text-white">
           <div class="space-y-4">
+            <div class="inline-flex items-center rounded-full border border-white/30 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-emerald-200">
+              Trusted by students across Ghana campuses
+            </div>
             <h1 class="text-4xl font-black leading-tight sm:text-5xl">Find Your Perfect Campus Home</h1>
             <p class="max-w-2xl text-base text-slate-100 sm:text-lg">
               Browse, compare and book verified university hostels - all in one place.
@@ -47,21 +51,36 @@
               Search
             </button>
           </form>
+
+          <div class="flex flex-wrap items-center gap-3">
+            <RouterLink
+              to="/hostels"
+              class="rounded-lg bg-emerald-500 px-4 py-2 text-sm font-semibold text-white transition hover:bg-emerald-400"
+            >
+              Browse Verified Hostels
+            </RouterLink>
+            <RouterLink
+              :to="{ path: '/', hash: '#how-it-works' }"
+              class="rounded-lg border border-white/40 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/10"
+            >
+              See How It Works
+            </RouterLink>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="border-y border-slate-200 bg-white py-6">
-      <div class="mx-auto grid w-full max-w-7xl gap-4 px-4 text-center sm:grid-cols-3 sm:px-6 lg:px-8">
-        <div>
+    <section class="border-y border-slate-200 bg-white py-7">
+      <div class="mx-auto grid w-full max-w-7xl gap-4 px-4 sm:grid-cols-3 sm:px-6 lg:px-8">
+        <div class="rounded-xl border border-slate-200 bg-slate-50 p-4 text-center">
           <p class="text-2xl font-black text-blue-900">500+</p>
           <p class="text-sm text-slate-600">Students Housed</p>
         </div>
-        <div>
+        <div class="rounded-xl border border-slate-200 bg-slate-50 p-4 text-center">
           <p class="text-2xl font-black text-blue-900">20+</p>
           <p class="text-sm text-slate-600">Verified Hostels</p>
         </div>
-        <div>
+        <div class="rounded-xl border border-slate-200 bg-slate-50 p-4 text-center">
           <p class="text-2xl font-black text-blue-900">3</p>
           <p class="text-sm text-slate-600">Room Types Available</p>
         </div>
@@ -70,7 +89,10 @@
 
     <section class="mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
       <div class="mb-8 flex items-center justify-between">
-        <h2 class="text-2xl font-black text-slate-900">Featured Hostels</h2>
+        <div>
+          <h2 class="text-2xl font-black text-slate-900">Featured Hostels</h2>
+          <p class="mt-1 text-sm text-slate-600">Top-rated options students are booking this semester.</p>
+        </div>
         <RouterLink
           to="/hostels"
           class="rounded-lg border border-blue-200 px-4 py-2 text-sm font-semibold text-blue-900 transition hover:bg-blue-50"
@@ -84,16 +106,20 @@
       </div>
     </section>
 
-    <section id="how-it-works" class="border-y border-slate-200 bg-white py-16">
+    <section id="how-it-works" class="border-y border-slate-200 bg-white py-16 scroll-mt-24">
       <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        <h2 class="mb-8 text-center text-2xl font-black text-slate-900">How It Works</h2>
+        <h2 class="mb-2 text-center text-2xl font-black text-slate-900">How It Works</h2>
+        <p class="mb-8 text-center text-sm text-slate-600">Three simple steps from search to move-in.</p>
 
         <div class="grid gap-6 md:grid-cols-3">
           <article
-            v-for="step in steps"
+            v-for="(step, index) in steps"
             :key="step.title"
-            class="rounded-2xl border border-slate-200 bg-slate-50 p-6 text-center"
+            class="rounded-2xl border border-slate-200 bg-slate-50 p-6 text-center transition hover:-translate-y-1 hover:shadow-md"
           >
+            <div class="mb-4 text-xs font-bold uppercase tracking-wide text-blue-700">
+              Step {{ index + 1 }}
+            </div>
             <div class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-blue-100 text-blue-900">
               <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path :d="step.icon" />
