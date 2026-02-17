@@ -123,7 +123,7 @@
       </div>
 
       <p class="mt-8 text-center text-xs text-slate-400">
-        © {{ currentYear }} CampusStay. All rights reserved.
+        (c) {{ currentYear }} CampusStay. All rights reserved.
       </p>
     </footer>
   </div>
